@@ -1,0 +1,30 @@
+html, body {
+	width: 100%;
+	height: auto;
+}
+#container {
+	width: 960px;
+	height: auto;
+	outline: 1px solid blue;
+	margin: 50px auto;
+}
+ul li {
+	display: block;
+	padding: 30px;
+}
+a {
+	text-decoration: none;
+	color: fuchsia;
+}
+a:link {
+	
+}
+a:visited {
+	
+}
+a:hover {
+	
+}
+a:active {
+	
+}

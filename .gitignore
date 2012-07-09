@@ -1,0 +1,8 @@
+.com.apple.**
+bin/**
+tmp/**
+*.tmp
+.DS_Store
+**/.DS_STORE
+*.orig
+*.log
