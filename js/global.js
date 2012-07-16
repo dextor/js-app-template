@@ -6,8 +6,9 @@
 */
 window.MyApplication = (function(app, $) {
 	
-	//the "global" scope of our application
-	// e.g > app.main.publicMethodName()
+/*
+ *	@contstructor new Main()
+ */	
 	var Main = function() {
 		
 		var self = this;
@@ -17,15 +18,20 @@ window.MyApplication = (function(app, $) {
 		var showLogAlerts = false; // set to false to prevent alert messaging for console fallback
 		
 		
-// private methods
+// private methods /////////////////////////////////////////////////////////////////////////////////
 		var sayHello = function() {
 			app.main.consolelog("Hello World!");
-			app.main.consolelog(this);
+			app.main.consolelog(['this: ', this]);	// Window.MyApplication.main
+			app.main.consolelog(['app.main: ', app.main]);
+		};
+
+
+		var setColor = function() {
+			$('a.colorable').myPlugin({'color': 'blue'}).css('textDecoration', 'underline');
 		};
 		
 		
-		
-// public methods ///////////////////////
+// public methods  /////////////////////////////////////////////////////////////////////////////////
 
 		var publicMethod0 = function() {
 			app.main.consolelog('publicMethod0');
@@ -56,14 +62,25 @@ window.MyApplication = (function(app, $) {
 		
 		
 		
-		//allow logging to be turned off
-		var consolelog = function(msg) { 
-			if (showLog) console.log(msg); 
+		//allow logging to be turned on/off
+		/*
+		 * @param {String, Array} the message to log
+		 * @param {String} the type of message (log, warn, error)
+		 */
+		var consolelog = function(msg, logType) { 
+			if (showLog === false) return false;
+			else {
+				if(logType == null) { var logType = 'log'; }
+				$(msg).each(function(i, val) {
+					console[logType](val);
+				});
+			} 
 		};
 		
 		
 		
-//js fallbacks
+//js fallbacks /////////////////////////////////////////////////////////////////////////////////
+
 		var consoleFallback = function() {
 			// avoid console problem in browsers without a console/ no firebug
 			if (typeof(console) === 'undefined') {
@@ -118,7 +135,8 @@ window.MyApplication = (function(app, $) {
 		}
 	};
 	
-	
+	//the "global" scope of our application
+	// e.g > app.main.publicMethodName()
 	app.main = app.main || new Main();
 	
 	
