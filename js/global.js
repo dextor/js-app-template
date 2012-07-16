@@ -7,15 +7,26 @@
 window.MyApplication = (function(app, $) {
 	
 /*
- *	@contstructor new Main()
+ *	@constructor new Main()
  */	
 	var Main = function() {
 		
 		var self = this;
-		var container = $('#container');
 		
+		//jQuery ref's
+		var container = $('#container');	//main container
+		var nav = container.find('ul.left-nav');	//left side nav
+		
+		// settings
 		var showLog = true; // set to false in production (hide the consolelog calls)
 		var showLogAlerts = false; // set to false to prevent alert messaging for console fallback
+		
+		
+		
+		
+		
+		
+		
 		
 		
 // private methods /////////////////////////////////////////////////////////////////////////////////
@@ -24,29 +35,25 @@ window.MyApplication = (function(app, $) {
 			app.main.consolelog(['this: ', this]);	// Window.MyApplication.main
 			app.main.consolelog(['app.main: ', app.main]);
 		};
-
 		
-		var setColor = function() {
-			$('a.colorable').myPlugin({'color': 'blue'}).css({'background': 'yellow', 'text-indent': '8px'});
+		
+		//left side nav
+		var bindNavClick = function() {
+			container.on('click', 'ul.left-nav a', function(e) {
+				e.preventDefault();
+				var self = $(this);
+				nav.find('a.active-page').removeClass('active-page');
+				self.addClass('active-page');
+			});
 		};
 		
 		
 		
-		var Nav = {
-			bindClick: function() {
-				container.on('click', 'ul.left-nav a', function(e) {
-					e.preventDefault();
-					var self = $(this);
-					var ul = self.closest('ul');
-					ul.find('a.active-page').removeClass('active-page');
-					self.addClass('active-page');
-				});
-			},
-			init: function() {
-				this.bindClick();
-				//other initialization stuff
-			}
-		};
+		
+		
+		
+		
+		
 		
 		
 // public methods  /////////////////////////////////////////////////////////////////////////////////
@@ -64,8 +71,12 @@ window.MyApplication = (function(app, $) {
 		};
 		
 		
-		// @param {String} sVar The key who's value you wish to return from the query string
-		// @returns {String} The value of the requested key
+		
+		
+		/*
+		* @param {String} sVar The key who's value you wish to return from the query string
+		* @returns {String} The value of the requested key
+		*/
 		var getQueryString = function(sVar) {
 			var urlStr = window.location.search.substring(1);
 			var sv = urlStr.split("&");
@@ -77,8 +88,6 @@ window.MyApplication = (function(app, $) {
 				}
 			}
 		};
-		
-		
 		
 		//allow logging to be turned on/off
 		/*
@@ -143,8 +152,7 @@ window.MyApplication = (function(app, $) {
 				consoleFallback();
 				indexOfFallback();
 				sayHello();
-				Nav.init();
-				// setColor();
+				bindNavClick();
 			},
 			/* public methods */
 			consolelog: consolelog,
