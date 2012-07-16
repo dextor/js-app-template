@@ -25,9 +25,27 @@ window.MyApplication = (function(app, $) {
 			app.main.consolelog(['app.main: ', app.main]);
 		};
 
-
+		
 		var setColor = function() {
 			$('a.colorable').myPlugin({'color': 'blue'}).css({'background': 'yellow', 'text-indent': '8px'});
+		};
+		
+		
+		
+		var Nav = {
+			bindClick: function() {
+				container.on('click', 'ul.left-nav a', function(e) {
+					e.preventDefault();
+					var self = $(this);
+					var ul = self.closest('ul');
+					ul.find('a.active-page').removeClass('active-page');
+					self.addClass('active-page');
+				});
+			},
+			init: function() {
+				this.bindClick();
+				//other initialization stuff
+			}
 		};
 		
 		
@@ -125,7 +143,8 @@ window.MyApplication = (function(app, $) {
 				consoleFallback();
 				indexOfFallback();
 				sayHello();
-				setColor();
+				Nav.init();
+				// setColor();
 			},
 			/* public methods */
 			consolelog: consolelog,
