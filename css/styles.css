@@ -44,6 +44,11 @@ html, body {
 				font-size: 12px;
 				line-height: 24px;
 			}
+				#container .left-nav li a.active-page {
+					color: blue;
+					background: yellow;
+					text-indent: 8px;
+				}
 	#container .content {
 		width: 780px;
 		margin: 20px 10px;
