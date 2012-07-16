@@ -1,17 +1,72 @@
 html, body {
 	width: 100%;
 	height: auto;
+	font-family: arial, sans;
+	font-size: 12px;
+	line-height: 16px;
 }
-#container {
+#container, #header, #footer {
 	width: 960px;
 	height: auto;
-	outline: 1px solid blue;
-	margin: 50px auto;
+	outline: 1px dotted #888;
+	margin: 0px auto;
 }
+
+#header {
+	height: 100px;
+}
+	#header h1 {
+		text-align: center;
+		padding: 35px 0px;
+		font-size: 25px;
+	}
+
+
+#container {
+	
+}
+	#container .left-nav, #container .content {
+		float: left;
+		display: block;
+	}
+	#container .left-nav {
+		width: 160px;
+		outline: 1px dotted #888;
+	}
+		#container .left-nav li {
+			display: block;
+			margin: 10px 5px 10px 15px;
+			border-bottom: 1px solid #ccc;
+		}
+			#container .left-nav li a {
+				display: block;
+				padding: 5px 0px;
+				font-size: 12px;
+				line-height: 24px;
+			}
+	#container .content {
+		width: 780px;
+		margin: 20px 10px;
+		outline: 1px dotted #ccc;
+/*		background: pink;*/
+	}
+		#container .content p {
+			text-indent: 16px;
+		}
+
+	
+#footer {
+	height: 40px;
+}
+	#footer p {
+		padding: 10px 0px;
+	}
+
+
 ul li {
-	display: block;
-	padding: 30px;
+	
 }
+
 a {
 	text-decoration: none;
 	color: fuchsia;
@@ -27,4 +82,15 @@ a:hover {
 }
 a:active {
 	
+}
+
+p {
+	margin-bottom: 10px;
+}
+
+
+
+
+.centered {
+	text-align: center;
 }

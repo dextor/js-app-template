@@ -27,7 +27,7 @@ window.MyApplication = (function(app, $) {
 
 
 		var setColor = function() {
-			$('a.colorable').myPlugin({'color': 'blue'}).css('textDecoration', 'underline');
+			$('a.colorable').myPlugin({'color': 'blue'}).css({'background': 'yellow', 'text-indent': '8px'});
 		};
 		
 		
@@ -124,7 +124,8 @@ window.MyApplication = (function(app, $) {
 				// private methods
 				consoleFallback();
 				indexOfFallback();
-				sayHello();	
+				sayHello();
+				setColor();
 			},
 			/* public methods */
 			consolelog: consolelog,
